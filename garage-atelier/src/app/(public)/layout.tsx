@@ -1,41 +1,72 @@
-import type { Metadata } from 'next';
-import { Inter, Fraunces } from 'next/font/google';
+import Link from 'next/link';
 
-import './globals.css';
+import { Logo } from '@/components/layout/Logo';
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  variable: '--font-fraunces',
-  display: 'swap',
-  axes: ['opsz', 'SOFT'],
-});
-
-export const metadata: Metadata = {
-  title: {
-    default: 'Égat Automobile — Atelier mécanique',
-    template: '%s — Égat Automobile',
-  },
-  description: 'Atelier mécanique automobile. Diagnostic, entretien et réparation toutes marques. Prise de rendez-vous en ligne et suivi temps réel.',
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
-
-export default function RootLayout({
+export default function PublicLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const garagePhone = process.env.NEXT_PUBLIC_GARAGE_PHONE ?? '';
+  const garageEmail = process.env.NEXT_PUBLIC_GARAGE_EMAIL ?? '';
+
   return (
-    <html lang="fr" className={`${inter.variable} ${fraunces.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
-    </html>
-  );
-}
+    <div className="flex min-h-screen flex-col">
+      {/* Header */}
+      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+        <div className="container flex h-20 items-center justify-between">
+          <Link href="/" className="group transition-opacity hover:opacity-80">
+            <Logo variant="full" />
+          </Link>
+
+          <nav className="flex items-center gap-2 sm:gap-6">
+            <Link
+              href="/prendre-rendez-vous"
+              className="hidden sm:inline-flex text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
+            >
+              Prendre rendez-vous
+            </Link>
+            <Link
+              href="/connexion"
+              className="btn-primary text-sm"
+            >
+              Mon espace
+            </Link>
+          </nav>
+        </div>
+      </header>
+
+      <main className="flex-1">{children}</main>
+
+      {/* Footer chaleureux */}
+      <footer className="mt-20 border-t border-border bg-card">
+        <div className="container py-12">
+          <div className="grid gap-8 sm:grid-cols-3">
+            <div>
+              <Logo variant="full" className="mb-4" />
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                L&apos;expertise et le savoir-faire d&apos;un atelier de proximité, au service de votre véhicule depuis toujours.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-serif text-lg mb-3">Contact</h3>
+              <ul className="space-y-1 text-sm text-muted-foreground">
+                {garagePhone && (
+                  <li>
+                    <a href={`tel:${garagePhone}`} className="hover:text-foreground transition-colors">
+                      {garagePhone}
+                    </a>
+                  </li>
+                )}
+                {garageEmail && (
+                  <li>
+                    <a href={`mailto:${garageEmail}`} className="hover:text-foreground transition-colors">
+                      {garageEmail}
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </div>
+
+            <div>
