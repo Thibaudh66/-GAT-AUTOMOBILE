@@ -4,71 +4,77 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Fond principal : ivoire chaleureux, pas le blanc clinique */
+    --background: 36 33% 97%;
+    --foreground: 24 10% 12%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Surfaces (cards, panneaux) : encore plus chaleureux */
+    --card: 36 28% 95%;
+    --card-foreground: 24 10% 12%;
 
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
+    /* Couleur primaire : terracotta brûlée */
+    --primary: 14 65% 42%;
+    --primary-foreground: 36 33% 97%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondaire : vert sapin sombre */
+    --secondary: 156 22% 22%;
+    --secondary-foreground: 36 33% 97%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted : tons sable */
+    --muted: 36 18% 90%;
+    --muted-foreground: 24 8% 38%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent : ocre doré */
+    --accent: 38 50% 88%;
+    --accent-foreground: 24 10% 12%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 65% 48%;
+    --destructive-foreground: 36 33% 97%;
 
-    --success: 142.1 76.2% 36.3%;
-    --success-foreground: 210 40% 98%;
+    --success: 156 35% 38%;
+    --success-foreground: 36 33% 97%;
 
-    --warning: 38 92% 50%;
-    --warning-foreground: 222.2 47.4% 11.2%;
+    --warning: 32 80% 50%;
+    --warning-foreground: 24 10% 12%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --border: 36 18% 85%;
+    --input: 36 18% 85%;
+    --ring: 14 65% 42%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 24 12% 8%;
+    --foreground: 36 25% 92%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 24 12% 12%;
+    --card-foreground: 36 25% 92%;
 
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 14 70% 55%;
+    --primary-foreground: 24 12% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 156 22% 32%;
+    --secondary-foreground: 36 25% 92%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 24 8% 18%;
+    --muted-foreground: 36 15% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 24 8% 20%;
+    --accent-foreground: 36 25% 92%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 36 25% 92%;
 
-    --success: 142.1 70.6% 45.3%;
-    --success-foreground: 222.2 47.4% 11.2%;
+    --success: 156 40% 50%;
+    --success-foreground: 24 12% 8%;
 
-    --warning: 48 96% 53%;
-    --warning-foreground: 222.2 47.4% 11.2%;
+    --warning: 32 80% 60%;
+    --warning-foreground: 24 12% 8%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --border: 24 8% 22%;
+    --input: 24 8% 22%;
+    --ring: 14 70% 55%;
   }
 }
 
@@ -79,10 +85,44 @@
 
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
+    font-feature-settings: 'rlig' 1, 'calt' 1, 'ss01' 1;
   }
 
   html {
     scroll-behavior: smooth;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-feature-settings: 'ss01' 1, 'opsz' 1;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Bouton primaire artisan */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border-2 border-foreground/20 bg-transparent px-6 py-3 text-base font-medium text-foreground transition-all hover:border-foreground/40 hover:bg-foreground/5;
+  }
+
+  /* Carte artisan avec ombre douce */
+  .card-artisan {
+    @apply rounded-xl border border-border bg-card p-6 transition-all hover:shadow-md;
+  }
+
+  /* Section avec espacement généreux */
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  /* Texte serif italique pour les accents */
+  .text-accent-serif {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
   }
 }
