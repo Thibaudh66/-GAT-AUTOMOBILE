@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 export default function HomePage() {
-  const garageName = process.env.NEXT_PUBLIC_GARAGE_NAME ?? 'Garage Atelier';
   const garagePhone = process.env.NEXT_PUBLIC_GARAGE_PHONE ?? '';
 
   return (
@@ -23,15 +22,15 @@ export default function HomePage() {
         <div className="container relative section-padding">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-accent-serif text-primary mb-4 text-lg">
-              Atelier de mécanique automobile
+              Atelier mécanique automobile
             </p>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-medium leading-[1.05] mb-6">
-              Votre véhicule entre
+              Égat,
               <br />
-              <span className="text-accent-serif text-primary">en bonnes mains.</span>
+              <span className="text-accent-serif text-primary">l&apos;exigence du détail.</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10">
-              Diagnostic, entretien et réparation par des passionnés. Prenez rendez-vous en ligne et suivez l&apos;avancement de votre véhicule en temps réel.
+              Diagnostic, entretien et réparation toutes marques. Prenez rendez-vous en ligne et suivez l&apos;avancement de votre véhicule en temps réel.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link href="/prendre-rendez-vous" className="btn-primary">
@@ -58,9 +57,9 @@ export default function HomePage() {
       <section className="border-t border-border bg-card">
         <div className="container section-padding">
           <div className="mx-auto max-w-2xl text-center mb-16">
-            <p className="text-accent-serif text-primary mb-3">Notre savoir-faire</p>
+            <p className="text-accent-serif text-primary mb-3">Nos services</p>
             <h2 className="text-3xl sm:text-4xl font-medium leading-tight">
-              Un service complet, sans surprises
+              Un atelier complet, des engagements clairs
             </h2>
           </div>
 
